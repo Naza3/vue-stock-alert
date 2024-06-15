@@ -1,16 +1,21 @@
 <script setup lang="ts">
-import StockInfo from './components/StockInfo.vue'
+import StockInfo from '@/components/StockInfo.vue'
+import PreTable from '@/components/primevue/PreTable.vue'
 import PreList from './components/primevue/PreList.vue'
+import PreToast from './components/primevue/PreToast.vue'
+import ToastDemo from './components/ToastDemo.vue'
 </script>
 
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
     <StockInfo />
+    <PreList />
   </header>
   <div>
-    <Button label="CheckButton" icon="pi pi-check" />
-    <PreList />
+    <PreTable />
+    <PreToast />
+    <ToastDemo />
   </div>
 </template>
 

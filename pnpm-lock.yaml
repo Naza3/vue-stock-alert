@@ -21,8 +21,8 @@ importers:
         specifier: ^7.0.0
         version: 7.0.0
       primevue:
-        specifier: 4.0.0-beta.5
-        version: 4.0.0-beta.5(vue@3.4.27(typescript@5.4.5))
+        specifier: 4.0.0-rc.1
+        version: 4.0.0-rc.1(vue@3.4.27(typescript@5.4.5))
       vue:
         specifier: ^3.4.21
         version: 3.4.27(typescript@5.4.5)
@@ -479,18 +479,22 @@ packages:
   '@polka/url@1.0.0-next.25':
     resolution: {integrity: sha512-j7P6Rgr3mmtdkeDGTe0E/aYyWEWVtc5yFXtHCRHs28/jptDEWfaVOc5T7cblqy1XKPPfCxJc/8DwQ5YgLOZOVQ==}
 
-  '@primevue/core@4.0.0-beta.5':
-    resolution: {integrity: sha512-WW3yva0irZ6tZ4UI2YKmWJERojRC+VqHyHksomMkqQQikoFv+mFjpausdbAYStoqQt3X43Y/vgipcaa6/Am5BA==}
+  '@primevue/core@4.0.0-rc.1':
+    resolution: {integrity: sha512-V9Q3fvG/KiIX8k0Nt9dLvp6miQkKfEqI91M0VVGwbN8jLNiOVLrT2jbC1fCHwoK6FpQgkehlqE7qQ7iQEpWTBQ==}
     engines: {node: '>=12.11.0'}
     peerDependencies:
       vue: ^3.0.0
 
-  '@primevue/icons@4.0.0-beta.5':
-    resolution: {integrity: sha512-c7wXE3DAiDc3z54tcqDdjNBB1yNqPbinDryaedOhzW+SPfEr1TNv/ZhEqV2ar+mt+6AvQHKz1ybT7bfP9m4QPQ==}
+  '@primevue/icons@4.0.0-rc.1':
+    resolution: {integrity: sha512-3X8cYMyhBX81cRhoMsmS+iGmkV4t9T1qeXxo3mmD3b5y+O7ZRNwpCHKtMrBontlQoX/5r4WWrZO9A2nPDGB4Xg==}
     engines: {node: '>=12.11.0'}
 
   '@primevue/themes@4.0.0-beta.5':
     resolution: {integrity: sha512-ok7N6dXR/o3Jhd56rNY+eaGKne1gSOe3T8COP/EiBLzqdGzk+NGWNj6J9IuCEX6M8qhfPbulei5tEMQPxYDJeQ==}
+    engines: {node: '>=12.11.0'}
+
+  '@primevue/themes@4.0.0-rc.1':
+    resolution: {integrity: sha512-t650tX7MRG4VIyy4LgsO3+F4tyrAJnKl3joyYGNjrSAoMd2kai7Ex1rOg/LyTEMHWa7DLcEDOr6LyWErxa4+hA==}
     engines: {node: '>=12.11.0'}
 
   '@rollup/pluginutils@5.1.0':
@@ -526,55 +530,46 @@ packages:
     resolution: {integrity: sha512-C/zbRYRXFjWvz9Z4haRxcTdnkPt1BtCkz+7RtBSuNmKzMzp3ZxdM28Mpccn6pt28/UWUCTXa+b0Mx1k3g6NOMA==}
     cpu: [arm]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-arm-musleabihf@4.18.0':
     resolution: {integrity: sha512-l3m9ewPgjQSXrUMHg93vt0hYCGnrMOcUpTz6FLtbwljo2HluS4zTXFy2571YQbisTnfTKPZ01u/ukJdQTLGh9A==}
     cpu: [arm]
     os: [linux]
-    libc: [musl]
 
   '@rollup/rollup-linux-arm64-gnu@4.18.0':
     resolution: {integrity: sha512-rJ5D47d8WD7J+7STKdCUAgmQk49xuFrRi9pZkWoRD1UeSMakbcepWXPF8ycChBoAqs1pb2wzvbY6Q33WmN2ftw==}
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-arm64-musl@4.18.0':
     resolution: {integrity: sha512-be6Yx37b24ZwxQ+wOQXXLZqpq4jTckJhtGlWGZs68TgdKXJgw54lUUoFYrg6Zs/kjzAQwEwYbp8JxZVzZLRepQ==}
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
 
   '@rollup/rollup-linux-powerpc64le-gnu@4.18.0':
     resolution: {integrity: sha512-hNVMQK+qrA9Todu9+wqrXOHxFiD5YmdEi3paj6vP02Kx1hjd2LLYR2eaN7DsEshg09+9uzWi2W18MJDlG0cxJA==}
     cpu: [ppc64]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-gnu@4.18.0':
     resolution: {integrity: sha512-ROCM7i+m1NfdrsmvwSzoxp9HFtmKGHEqu5NNDiZWQtXLA8S5HBCkVvKAxJ8U+CVctHwV2Gb5VUaK7UAkzhDjlg==}
     cpu: [riscv64]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-s390x-gnu@4.18.0':
     resolution: {integrity: sha512-0UyyRHyDN42QL+NbqevXIIUnKA47A+45WyasO+y2bGJ1mhQrfrtXUpTxCOrfxCR4esV3/RLYyucGVPiUsO8xjg==}
     cpu: [s390x]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-x64-gnu@4.18.0':
     resolution: {integrity: sha512-xuglR2rBVHA5UsI8h8UbX4VJ470PtGCf5Vpswh7p2ukaqBGFTnsfzxUBetoWBWymHMxbIG0Cmx7Y9qDZzr648w==}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
 
   '@rollup/rollup-linux-x64-musl@4.18.0':
     resolution: {integrity: sha512-LKaqQL9osY/ir2geuLVvRRs+utWUNilzdE90TpyoX0eNqPzWjRm14oMEE+YLve4k/NAqCdPkGYDaDF5Sw+xBfg==}
     cpu: [x64]
     os: [linux]
-    libc: [musl]
 
   '@rollup/rollup-win32-arm64-msvc@4.18.0':
     resolution: {integrity: sha512-7J6TkZQFGo9qBKH0pk2cEVSRhJbL6MtfWxth7Y5YmZs57Pi+4x6c2dStAUvaQkHQLnEQv1jzBUW43GvZW8OFqA==}
@@ -1661,8 +1656,8 @@ packages:
   primeicons@7.0.0:
     resolution: {integrity: sha512-jK3Et9UzwzTsd6tzl2RmwrVY/b8raJ3QZLzoDACj+oTJ0oX7L9Hy+XnVwgo4QVKlKpnP/Ur13SXV/pVh4LzaDw==}
 
-  primevue@4.0.0-beta.5:
-    resolution: {integrity: sha512-6gc1LPgBZq+RZFzMBj4yKI/jEkQzqV6iLfX9MSZMZQXGAkY+fqq8Pj8rAArHmZiKBQegKhOc3hU781NgEfoxXw==}
+  primevue@4.0.0-rc.1:
+    resolution: {integrity: sha512-dSOHMHujpa14J0tG1IwXoci1/Q+PE/ILzzyOfAn4v44AqL9lW3QYkf70PszMnmHetnIBR7pZ0T1Y8KUyFr2REg==}
     engines: {node: '>=12.11.0'}
 
   proto-list@1.2.4:
@@ -2514,18 +2509,20 @@ snapshots:
 
   '@polka/url@1.0.0-next.25': {}
 
-  '@primevue/core@4.0.0-beta.5(vue@3.4.27(typescript@5.4.5))':
+  '@primevue/core@4.0.0-rc.1(vue@3.4.27(typescript@5.4.5))':
     dependencies:
-      '@primevue/themes': 4.0.0-beta.5
+      '@primevue/themes': 4.0.0-rc.1
       vue: 3.4.27(typescript@5.4.5)
 
-  '@primevue/icons@4.0.0-beta.5(vue@3.4.27(typescript@5.4.5))':
+  '@primevue/icons@4.0.0-rc.1(vue@3.4.27(typescript@5.4.5))':
     dependencies:
-      '@primevue/core': 4.0.0-beta.5(vue@3.4.27(typescript@5.4.5))
+      '@primevue/core': 4.0.0-rc.1(vue@3.4.27(typescript@5.4.5))
     transitivePeerDependencies:
       - vue
 
   '@primevue/themes@4.0.0-beta.5': {}
+
+  '@primevue/themes@4.0.0-rc.1': {}
 
   '@rollup/pluginutils@5.1.0(rollup@4.18.0)':
     dependencies:
@@ -3745,10 +3742,10 @@ snapshots:
 
   primeicons@7.0.0: {}
 
-  primevue@4.0.0-beta.5(vue@3.4.27(typescript@5.4.5)):
+  primevue@4.0.0-rc.1(vue@3.4.27(typescript@5.4.5)):
     dependencies:
-      '@primevue/core': 4.0.0-beta.5(vue@3.4.27(typescript@5.4.5))
-      '@primevue/icons': 4.0.0-beta.5(vue@3.4.27(typescript@5.4.5))
+      '@primevue/core': 4.0.0-rc.1(vue@3.4.27(typescript@5.4.5))
+      '@primevue/icons': 4.0.0-rc.1(vue@3.4.27(typescript@5.4.5))
     transitivePeerDependencies:
       - vue
 

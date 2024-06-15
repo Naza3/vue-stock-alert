@@ -1,7 +1,9 @@
 <template>
   <div>
     <input type="file" @change="handleFileChange" />
+
     <h2>股票数据列表</h2>
+
     <ul v-if="stocks.length > 0">
       <li v-for="stock in stocks" :key="stock.name">
         <p>股票名称：{{ stock.name }}</p>
@@ -12,14 +14,6 @@
         <p>成交量：{{ stock.volume }}</p>
         <p>成交额：{{ stock.turnover }}</p>
       </li>
-      <div>
-        <h2>股票列表</h2>
-        <ul>
-          <li v-for="(symbol, index) in stockListStore.stocks" :key="index">
-            {{ symbol }}
-          </li>
-        </ul>
-      </div>
     </ul>
     <p v-else>No stock data available.</p>
   </div>
@@ -58,7 +52,7 @@ function startFetching() {
   const interval = setInterval(async () => {
     // await getMultipleStockData(symbols.value)
     await getMultipleStockData(stockListStore.formatStocks)
-  }, 30000) // 每隔 30 秒获取一次数据
+  }, 10000) // 每隔 30 秒获取一次数据
   onMounted(() => {
     // 组件销毁时停止定时器
     watch(
@@ -75,7 +69,6 @@ function startFetching() {
 // onMounted(() => {})
 // 组件加载时，可以根据需要初始化 symbols 和启动定时获取数据
 watch(
-  // () => symbols.value,
   // 使用pina管理stock列表
   () => stockListStore.stocks,
   () => {

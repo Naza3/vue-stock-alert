@@ -1,27 +1,18 @@
 import axios from 'axios'
+// import { http } from '@tauri-apps/api'
+import { useStockListStore } from '@/stores/stockListStore'
+
 async function getMultipleStockData(symbols: []) {
+  const stockListStore = useStockListStore()
   try {
     const secids = symbols.join(',')
-    const url = `http://push2.eastmoney.com/api/qt/ulist.np/get?secids=${secids}`
+    const url = `https://push2.eastmoney.com/api/qt/ulist.np/get?secids=${secids}`
     const response = await axios.get(url)
+    // const response = await http.fetch(url, { method: 'GET', timeout: 1 })
     const data = response.data
 
     if (data && data.data && Array.isArray(data.data.diff)) {
-      data.data.diff.forEach((stockInfo: any) => {
-        // 打印股票信息到控制台
-        console.log({
-          name: stockInfo.f14,
-          current: stockInfo.f2 / 100,
-          open: stockInfo.f17 / 100,
-          high: stockInfo.f15 / 100,
-          low: stockInfo.f16 / 100,
-          volume: stockInfo.f5,
-          turnover: stockInfo.f6
-        })
-      })
-
-      // 更新股票列表
-      return data.data.diff.map((stockInfo: any) => ({
+      const candlestick = data.data.diff.map((stockInfo: any) => ({
         name: stockInfo.f14,
         current: stockInfo.f2 / 100,
         open: stockInfo.f17 / 100,
@@ -30,6 +21,14 @@ async function getMultipleStockData(symbols: []) {
         volume: stockInfo.f5,
         turnover: stockInfo.f6
       }))
+      // 打印股票信息到控制台
+
+      console.log('history', stockListStore.stockDataHistory)
+      stockListStore.setStocksCandlestick(candlestick)
+      stockListStore.calculatePercentageChange()
+
+      // 更新股票列表
+      return candlestick
     } else {
       console.error('No data returned from API or data format is incorrect')
       return []

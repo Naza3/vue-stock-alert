@@ -8,13 +8,13 @@ export const useStockStore = defineStore('stockStore', {
     formatStocks: [] as string[],
     stockCandletick: [] as Candlestick[],
     stockDataHistory: [] as Candlestick[][],
-    alarmStock: [] as Candlestick[],
+    alertStock: [] as Candlestick[],
     calCycle: 6 as number, // 表示计算涨速的周期，默认为6表示一分钟
     fetchCycle: 10 as number // 表示获取数据的间隔周期，默认为10s
   }),
   actions: {
-    clearAlarm() {
-      this.alarmStock = [] as Candlestick[]
+    clearAlert() {
+      this.alertStock = [] as Candlestick[]
     },
     setStocks(stocksList: string[]) {
       this.stocks = stocksList
@@ -49,7 +49,7 @@ export const useStockStore = defineStore('stockStore', {
         return currentCandlesticks
       }
     },
-    pushAlarm() {
+    pushAlert() {
       // 数据长度大于6再计算, 可以设置数据长度x, (x>=2). x * 获取数据的频率(初始设置为10s获取一次)即为时间间隔
       if (this.stockDataHistory.length > this.calCycle) {
         const currentData = this.stockDataHistory.slice(-1)[0]
@@ -57,7 +57,7 @@ export const useStockStore = defineStore('stockStore', {
           if (currentData[index].increaseSpeed > 2) {
             // if (currentData[index].increaseRate > 5) {
             // 测试用涨幅替代涨速
-            this.alarmStock.push(currentData[index])
+            this.alertStock.push(currentData[index])
           }
         }
       }

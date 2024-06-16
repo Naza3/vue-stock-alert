@@ -28,23 +28,23 @@ const playSound = () => {
 const stockStore = useStockStore()
 const toast = useToast()
 
-// Watch for changes in alarmStock and trigger toast
+// Watch for changes in alertStock and trigger toast
 watch(
-  () => stockStore.alarmStock,
+  () => stockStore.alertStock,
   (newVal, oldVal) => {
     if (newVal.length > 0) {
-      for (const alarmStock of newVal) {
+      for (const alertStock of newVal) {
         toast.add({
           severity: 'info',
           summary: 'Stock Price Alert',
-          detail: `${alarmStock.name}`,
+          detail: `${alertStock.name}`,
           life: 5000 // Toast display time, 0表示不会自动关闭, 只有手动关闭
         })
-        console.log(`异动股票${alarmStock.name}`)
+        console.log(`异动股票${alertStock.name}`)
       }
       playSound()
-      console.log('删除alarmStock')
-      stockStore.clearAlarm()
+      console.log('删除alertStock')
+      stockStore.clearAlert()
     }
   },
   { deep: true }

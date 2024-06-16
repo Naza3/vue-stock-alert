@@ -17,7 +17,7 @@ const toast = useToast()
 
 // Watch for changes in alarmStock and trigger toast
 watch(
-  () => stockStore.alarmStock,
+  () => stockStore.alertStock,
   (newVal, oldVal) => {
     toast.add({
       severity: 'info',

@@ -29,7 +29,7 @@ async function getMultipleStockData(symbols: string[]) {
       const calCandlestick = stockStore.calIncreaseSpeed(candlestick)
       console.log('history', stockStore.stockDataHistory)
       stockStore.setStocksCandlestick(calCandlestick)
-      stockStore.pushAlarm()
+      stockStore.pushAlert()
 
       // 更新股票列表
       return calCandlestick

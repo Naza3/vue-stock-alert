@@ -1,10 +1,7 @@
 <template>
   <div>
     <input type="file" @change="handleFileChange" />
-
-    <h2>股票数据列表</h2>
-
-    <ul v-if="stocks.length > 0">
+    <!-- <ul v-if="stocks.length > 0">
       <li v-for="stock in stocks" :key="stock.name">
         <p>股票名称：{{ stock.name }}</p>
         <p>当前价格：{{ stock.current }}</p>
@@ -15,18 +12,18 @@
         <p>成交额：{{ stock.turnover }}</p>
       </li>
     </ul>
-    <p v-else>No stock data available.</p>
+    <p v-else>No stock data available.</p> -->
   </div>
 </template>
 
 <script setup>
 import { ref, onMounted, watch } from 'vue'
 import { getMultipleStockData, parseSymbols, readFileAsText } from '@/composables/useStockData'
-import { useStockListStore } from '@/stores/stockListStore'
+import { useStockStore } from '@/stores/stockStore'
 
 // 用pina状态替代symbols
 // const symbols = ref([])
-const stockListStore = useStockListStore()
+const stockStore = useStockStore()
 const stocks = ref([])
 
 async function handleFileChange(event) {
@@ -37,10 +34,10 @@ async function handleFileChange(event) {
       const symbols = parseSymbols(content)
 
       // 保存symbols到pina状态
-      stockListStore.setStocks(symbols)
+      stockStore.setStocks(symbols)
 
       // 调用获取股票数据的函数
-      stocks.value = await getMultipleStockData(stockListStore.formatStocks)
+      stocks.value = await getMultipleStockData(stockStore.formatStocks)
     } catch (error) {
       console.error('Failed to read file or fetch stock data:', error)
     }
@@ -50,8 +47,7 @@ async function handleFileChange(event) {
 // 使用定时器定期获取股票数据
 function startFetching() {
   const interval = setInterval(async () => {
-    // await getMultipleStockData(symbols.value)
-    await getMultipleStockData(stockListStore.formatStocks)
+    await getMultipleStockData(stockStore.formatStocks)
   }, 10000) // 每隔 30 秒获取一次数据
   onMounted(() => {
     // 组件销毁时停止定时器
@@ -65,12 +61,9 @@ function startFetching() {
   })
 }
 
-// 组件加载时开始获取股票数据
-// onMounted(() => {})
-// 组件加载时，可以根据需要初始化 symbols 和启动定时获取数据
 watch(
   // 使用pina管理stock列表
-  () => stockListStore.stocks,
+  () => stockStore.stocks,
   () => {
     startFetching()
   }
@@ -80,4 +73,4 @@ watch(
 <style>
 /* 样式可以根据需求自行添加 */
 </style>
-@/stores/stockListStore
+@/stores/stockStore

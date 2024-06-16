@@ -16,9 +16,9 @@ import { ref, onMounted, watch } from 'vue'
 
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
-import { useStockListStore } from '@/stores/stockListStore'
+import { useStockStore } from '@/stores/stockStore'
 
-const stockStore = useStockListStore()
+const stockStore = useStockStore()
 const stocks = ref(stockStore.stockCandletick)
 onMounted(() => {
   // ProductService.getProductsMini().then((data) => (products.value = data));

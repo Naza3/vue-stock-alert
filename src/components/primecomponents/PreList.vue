@@ -1,11 +1,11 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { useStockListStore } from '@/stores/stockListStore'
+import { useStockStore } from '@/stores/stockStore'
 
-const stockListStore = useStockListStore()
+const stockStore = useStockStore()
 const selectedCity = ref()
 const stockOptions = computed(() => {
-  return stockListStore.stocks.map((stock) => ({
+  return stockStore.stocks.map((stock) => ({
     label: stock,
     value: stock
   }))

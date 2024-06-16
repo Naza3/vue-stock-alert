@@ -7,27 +7,28 @@
 
 <script setup>
 import { watch } from 'vue'
-import { useStockListStore } from '@/stores/stockListStore'
+import { useStockStore } from '@/stores/stockListStore'
 import { useToast } from 'primevue/usetoast'
 import Toast from 'primevue/toast'
 
-const stockListStore = useStockListStore()
+const stockStore = useStockStore()
 
 const toast = useToast()
 
 // Watch for changes in alarmStock and trigger toast
 watch(
-  () => stockListStore.alarmStock,
+  () => stockStore.alarmStock,
   (newVal, oldVal) => {
     toast.add({
       severity: 'info',
       summary: 'Stock Price Alert',
       detail: 'price is now',
-      life: 3000 // Toast display time
+      life: 0 // Toast display time, 0表示不会自动关闭, 只有手动关闭
     })
     console.log('删除alarmStock')
-    stockListStore.shiftAlarm()
+    stockStore.shiftAlarm()
   },
   { deep: true }
 )
 </script>
+@/stores/stockStore

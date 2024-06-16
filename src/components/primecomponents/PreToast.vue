@@ -11,6 +11,6 @@ import Toast from 'primevue/toast'
 const toast = useToast()
 
 const show = () => {
-  toast.add({ severity: 'info', summary: 'Info', detail: 'Message Content', life: 3000 })
+  toast.add({ severity: 'info', summary: 'Info', detail: 'Message Content', life: 0 })
 }
 </script>

@@ -1,9 +1,10 @@
 import axios from 'axios'
 // import { http } from '@tauri-apps/api'
-import { useStockListStore } from '@/stores/stockListStore'
+
+import { useStockStore } from '@/stores/stockStore'
 
 async function getMultipleStockData(symbols: []) {
-  const stockListStore = useStockListStore()
+  const stockStore = useStockStore()
   try {
     const secids = symbols.join(',')
     const url = `https://push2.eastmoney.com/api/qt/ulist.np/get?secids=${secids}`
@@ -18,14 +19,16 @@ async function getMultipleStockData(symbols: []) {
         open: stockInfo.f17 / 100,
         high: stockInfo.f15 / 100,
         low: stockInfo.f16 / 100,
+        increaseRate: stockInfo.f3, // 涨幅
+        increaseSpeed: 0, // 涨幅
         volume: stockInfo.f5,
         turnover: stockInfo.f6
       }))
       // 打印股票信息到控制台
 
-      console.log('history', stockListStore.stockDataHistory)
-      stockListStore.setStocksCandlestick(candlestick)
-      stockListStore.calculatePercentageChange()
+      console.log('history', stockStore.stockDataHistory)
+      stockStore.setStocksCandlestick(candlestick)
+      stockStore.calculatePercentageChange()
 
       // 更新股票列表
       return candlestick
@@ -39,10 +42,14 @@ async function getMultipleStockData(symbols: []) {
   }
 }
 function parseSymbols(content: string) {
-  return content
-    .trim()
-    .split('\n')
-    .map((line) => line.trim())
+  return [
+    ...new Set(
+      content
+        .trim()
+        .split('\n')
+        .map((line) => line.trim())
+    )
+  ]
 }
 
 function readFileAsText(file: File) {

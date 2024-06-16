@@ -1,26 +1,18 @@
 import { defineStore } from 'pinia'
 import { formatStockStrings } from '@/utils/convert'
-interface CandleStick {
-  name: string
-  current: number
-  open: number
-  high: number
-  low: number
-  volume: number
-  turnover: number
-}
+import type { Candlestick } from '@/utils/types'
 
-export const useStockListStore = defineStore('stockListStore', {
+export const useStockStore = defineStore('stockStore', {
   state: () => ({
     stocks: [] as string[],
     formatStocks: [] as string[],
-    stockCandletick: [] as CandleStick[],
-    stockDataHistory: [] as CandleStick[][],
-    alarmStock: [] as CandleStick[]
+    stockCandletick: [] as Candlestick[],
+    stockDataHistory: [] as Candlestick[][],
+    alarmStock: [] as Candlestick[]
   }),
   actions: {
     shiftAlarm() {
-      if (this.alarmStock.length > 10) {
+      if (this.alarmStock.length > 6) {
         console.log('长度大于十')
         this.alarmStock.shift()
         console.log(`长度：${this.alarmStock.length}`)
@@ -32,7 +24,7 @@ export const useStockListStore = defineStore('stockListStore', {
       // 股票列表更新后，重置历史数据
       this.stockDataHistory = []
     },
-    setStocksCandlestick(CandleStickdata: CandleStick[]) {
+    setStocksCandlestick(CandleStickdata: Candlestick[]) {
       this.stockCandletick = CandleStickdata
       if (this.stockDataHistory.length >= 10) {
         this.stockDataHistory.shift()
@@ -40,10 +32,10 @@ export const useStockListStore = defineStore('stockListStore', {
       this.stockDataHistory.push(CandleStickdata)
     },
     calculatePercentageChange() {
-      // 数据长度大于10再计算
-      if (this.stockDataHistory.length >= 1) {
-        const currentData: CandleStick[] = this.stockDataHistory.slice(-1)[0]
-        const firstData: CandleStick[] = this.stockDataHistory[0]
+      // 数据长度大于10再计算, 可以设置数据长度x, (x>=2). x * 获取数据的频率(初始设置为10s获取一次)即为时间间隔
+      if (this.stockDataHistory.length >= 6) {
+        const currentData: Candlestick[] = this.stockDataHistory.slice(-1)[0]
+        const firstData: Candlestick[] = this.stockDataHistory[0]
         if (currentData.length === firstData.length) {
           for (const index of currentData.keys()) {
             const currentPrice = currentData[index].current

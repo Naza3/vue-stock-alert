@@ -1,12 +1,14 @@
 <template>
   <div>
-    <div class="card flex justify-center">
-      <Button label="Stop" @click="stockFetcher.stopFetching" />
-      <Button label="Start" @click="stockFetcher.startFetching" />
-    </div>
     <input type="file" @change="handleFileChange" />
-    <ul v-if="stockStore.stockCandletick.length > 0"></ul>
+    <ul v-if="stockStore.stockCandletick.length > 0">
+      <p>正常获取股票数据中...</p>
+    </ul>
     <p v-else>No stock data available.</p>
+    <div class="card flex justify-center">
+      <Button label="停止获取" @click="stockFetcher.stopFetching" />
+      <Button label="继续获取" @click="stockFetcher.startFetching" />
+    </div>
   </div>
 </template>
 
@@ -55,6 +57,7 @@ const stockFetcher = (() => {
     if (fetchInterval !== null) {
       clearInterval(fetchInterval)
       fetchInterval = null
+      stockStore.reset()
     }
   }
   return { startFetching, stopFetching }
@@ -67,14 +70,14 @@ watch(
     stockFetcher.startFetching()
   }
 )
-function startFetch() {
-  stockFetcher.startFetching()
-  console.log('停止获取')
-}
-function stopFetch() {
-  stockFetcher.stopFetching()
-  console.log('停止获取')
-}
+// function startFetch() {
+//   stockFetcher.startFetching()
+//   console.log('停止获取')
+// }
+// function stopFetch() {
+//   stockFetcher.stopFetching()
+//   console.log('停止获取')
+// }
 </script>
 
 <style>

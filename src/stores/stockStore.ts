@@ -13,6 +13,12 @@ export const useStockStore = defineStore('stockStore', {
     fetchCycle: 10 as number // 表示获取数据的间隔周期，默认为10s
   }),
   actions: {
+    reset() {
+      // 重置数据为默认值
+      this.stockCandletick = [] as Candlestick[]
+      this.stockDataHistory = [] as Candlestick[][]
+      this.alertStock = [] as Candlestick[]
+    },
     clearAlert() {
       this.alertStock = [] as Candlestick[]
     },

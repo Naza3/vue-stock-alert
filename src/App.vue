@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import StockInfo from '@/components/StockInfo.vue'
-import PreTable from '@/components/primevue/PreTable.vue'
-import PreList from './components/primevue/PreList.vue'
-import PreToast from './components/primevue/PreToast.vue'
+import AudioDemo from '@/components/AudioDemo.vue'
+import PreTable from '@/components/primecomponents/PreTable.vue'
+import PreList from '@/components/primecomponents/PreList.vue'
+import PreToast from '@/components/primecomponents/PreToast.vue'
+// import PreTextArea from '@/components/primecomponents/PreTextArea.vue'
 import ToastDemo from './components/ToastDemo.vue'
 </script>
 
@@ -15,7 +17,9 @@ import ToastDemo from './components/ToastDemo.vue'
   <div>
     <PreTable />
     <PreToast />
-    <ToastDemo />
+    <!-- <PreTextArea /> -->
+    <!-- <ToastDemo /> -->
+    <AudioDemo />
   </div>
 </template>
 

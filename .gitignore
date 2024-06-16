@@ -16,7 +16,6 @@ coverage
 
 /cypress/videos/
 /cypress/screenshots/
-src/primecomponents/
 
 # Editor directories and files
 .vscode/*

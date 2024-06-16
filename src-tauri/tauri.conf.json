@@ -6,7 +6,7 @@
     "distDir": "../dist"
   },
   "package": {
-    "productName": "vue-stock-alarm",
+    "productName": "vue-stock-alert",
     "version": "0.1.0"
   },
   "tauri": {
@@ -33,7 +33,7 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.stockAlarm",
+      "identifier": "com.tauri.stockAlert",
       "longDescription": "",
       "macOS": {
         "entitlements": null,
@@ -62,7 +62,7 @@
         "fullscreen": false,
         "height": 600,
         "resizable": true,
-        "title": "vue-stock-alarm",
+        "title": "vue-stock-alert",
         "width": 800
       }
     ]

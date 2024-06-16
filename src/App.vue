@@ -1,25 +1,25 @@
 <script setup lang="ts">
 import StockInfo from '@/components/StockInfo.vue'
 import AudioDemo from '@/components/AudioDemo.vue'
-import PreTable from '@/components/primecomponents/PreTable.vue'
-import PreList from '@/components/primecomponents/PreList.vue'
+import StockTable from '@/components/StockTable.vue'
 import PreToast from '@/components/primecomponents/PreToast.vue'
 // import PreTextArea from '@/components/primecomponents/PreTextArea.vue'
-import ToastDemo from './components/ToastDemo.vue'
+import StockToast from '@/components/StockToast.vue'
+import ConsoleUI from '@/components/ConsoleUI.vue'
 </script>
 
 <template>
   <header>
     <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
     <StockInfo />
-    <PreList />
   </header>
   <div>
-    <PreTable />
-    <PreToast />
-    <!-- <PreTextArea /> -->
+    <StockTable />
+    <StockToast />
+    <PreTextArea />
     <!-- <ToastDemo /> -->
-    <AudioDemo />
+    <!-- <AudioDemo /> -->
+    <!-- <ConsoleUI /> -->
   </div>
 </template>
 

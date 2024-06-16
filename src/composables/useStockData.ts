@@ -3,7 +3,7 @@ import axios from 'axios'
 
 import { useStockStore } from '@/stores/stockStore'
 
-async function getMultipleStockData(symbols: []) {
+async function getMultipleStockData(symbols: string[]) {
   const stockStore = useStockStore()
   try {
     const secids = symbols.join(',')
@@ -14,24 +14,25 @@ async function getMultipleStockData(symbols: []) {
 
     if (data && data.data && Array.isArray(data.data.diff)) {
       const candlestick = data.data.diff.map((stockInfo: any) => ({
+        code: stockInfo.f12,
         name: stockInfo.f14,
         current: stockInfo.f2 / 100,
         open: stockInfo.f17 / 100,
         high: stockInfo.f15 / 100,
         low: stockInfo.f16 / 100,
-        increaseRate: stockInfo.f3, // 涨幅
-        increaseSpeed: 0, // 涨幅
+        increaseRate: stockInfo.f3 / 100, // 涨幅
+        increaseSpeed: 0, // 涨速
         volume: stockInfo.f5,
-        turnover: stockInfo.f6
+        amount: stockInfo.f6
       }))
-      // 打印股票信息到控制台
 
+      const calCandlestick = stockStore.calIncreaseSpeed(candlestick)
       console.log('history', stockStore.stockDataHistory)
-      stockStore.setStocksCandlestick(candlestick)
-      stockStore.calculatePercentageChange()
+      stockStore.setStocksCandlestick(calCandlestick)
+      stockStore.pushAlarm()
 
       // 更新股票列表
-      return candlestick
+      return calCandlestick
     } else {
       console.error('No data returned from API or data format is incorrect')
       return []
@@ -53,11 +54,14 @@ function parseSymbols(content: string) {
 }
 
 function readFileAsText(file: File) {
-  return new Promise((resolve, reject) => {
+  return new Promise<string>((resolve, reject) => {
     const reader = new FileReader()
 
     reader.onload = () => {
-      resolve(reader.result)
+      const result = reader.result
+      if (typeof result === 'string') {
+        resolve(result)
+      }
     }
 
     reader.onerror = () => {

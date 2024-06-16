@@ -7,7 +7,7 @@
 
 <script setup>
 import { watch } from 'vue'
-import { useStockStore } from '@/stores/stockListStore'
+import { useStockStore } from '@/stores/stockStore'
 import { useToast } from 'primevue/usetoast'
 import Toast from 'primevue/toast'
 

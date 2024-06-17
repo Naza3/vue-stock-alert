@@ -28,6 +28,9 @@ async function getMultipleStockData(symbols: string[]) {
 
       const calCandlestick = stockStore.calIncreaseSpeed(candlestick)
       console.log('history', stockStore.stockDataHistory)
+      const currentDate = new Date()
+      const seconds = String(currentDate.getSeconds()).padStart(2, '0')
+      console.log('当前秒', seconds)
       stockStore.setStocksCandlestick(calCandlestick)
       stockStore.pushAlert()
 

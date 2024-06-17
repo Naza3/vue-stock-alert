@@ -1,45 +1,49 @@
 # vue-stock-alarm
 
-This template should help get you started developing with Vue 3 in Vite.
+## 股票预警系统
 
-## Recommended IDE Setup
+目前实现涨速预警，满足涨速条件时弹出窗口，发出提示音
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+数据源：东方财富接口
 
-## Type Support for `.vue` Imports in TS
+#### [Vue](https://vuejs.org/)+[Vite](https://vitejs.dev/)+[PrimeVue](https://primevue.org/)+[Pinia](https://pinia.vuejs.org/)+[Tauri](https://tauri.app/)
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
+## 项目使用说明
 
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
+### 克隆到本地
+```sh
+git clone 
+```
+### 安装依赖包
 ```sh
 pnpm install
 ```
 
-### Compile and Hot-Reload for Development
+### 编译和热重载以进行开发
 
 ```sh
-pnpm dev
+pnpm run dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### 为生产进行类型检查、编译和缩小
 
 ```sh
-pnpm build
+pnpm run build
 ```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
+### tauri生成桌面程序
 
 ```sh
-pnpm test:unit
+cargo tauri build
 ```
 
-### Lint with [ESLint](https://eslint.org/)
+### 运行程序
 
-```sh
-pnpm lint
-```
+打开软件，点击上传股票列表，按照`stock.txt`文件中格式填写想要观察的股票。
+
+#### 参数说明：
+
+数据更新频率：默认10秒，指隔10秒从服务器获取股票实时数据。
+
+异动计算周期：默认60秒，指计算60秒内的涨速。
+
+涨速临界值：默认3，指计算周期内涨速超过3%，则弹出消息提示(手动关闭)以及提示音。

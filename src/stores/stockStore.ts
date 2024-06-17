@@ -49,7 +49,7 @@ export const useStockStore = defineStore('stockStore', {
     calIncreaseSpeed(currentCandlesticks: Candlestick[]) {
       // 通过涨幅计算涨速
       if (this.stockDataHistory.length >= this.calCycle / this.fetchCycle) {
-        // 存在6个历史数据，间隔50秒，第60秒更新涨速
+        // 存在6个历史数据，间隔50秒，第60秒更新涨速(只是举例说明,具体数字可自定义)
         const firstData: Candlestick[] = this.stockDataHistory[0]
         const currentData: Candlestick[] = currentCandlesticks
         for (const index of currentData.keys()) {
@@ -66,13 +66,10 @@ export const useStockStore = defineStore('stockStore', {
       }
     },
     pushAlert() {
-      // 数据长度大于6再计算, 可以设置数据长度x, (x>=2). x * 获取数据的频率(初始设置为10s获取一次)即为时间间隔
-      if (this.stockDataHistory.length > this.calCycle) {
+      if (this.stockDataHistory.length > this.calCycle / this.fetchCycle) {
         const currentData = this.stockDataHistory.slice(-1)[0]
         for (const index of currentData.keys()) {
           if (currentData[index].increaseSpeed > this.speedLimit) {
-            // if (currentData[index].increaseRate > 5) {
-            // 测试用涨幅替代涨速
             this.alertStock.push(currentData[index])
           }
         }

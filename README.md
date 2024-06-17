@@ -38,6 +38,8 @@ cargo tauri build
 
 ### 运行程序
 
+![主界面](https://github.com/Naza3/vue-stock-alert/blob/master/public/mainWindowScreen.png)
+
 打开软件，点击上传股票列表，按照`stock.txt`文件中格式填写想要观察的股票。
 
 #### 参数说明：

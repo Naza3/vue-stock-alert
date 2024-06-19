@@ -14,7 +14,7 @@
       <InputText placeholder="10" v-model="fetchCycle" />
       <InputGroupAddon>异动计算周期(s)</InputGroupAddon>
       <InputText placeholder="60" v-model="calCycle" />
-      <InputGroupAddon>涨速临界值</InputGroupAddon>
+      <InputGroupAddon>涨速临界值(%)</InputGroupAddon>
       <InputText placeholder="3" v-model="speedLimit" />
     </InputGroup>
   </div>
